@@ -1,0 +1,67 @@
+# ==============================================================================
+# IntuiSim Open-Source Engine Git Exclusion Manifest
+# ==============================================================================
+
+# --- Proprietary Content & YouTube Production Quarantine ---
+projects/
+vault/
+thumbnails/
+CONTENT_CALENDAR.md
+build_ep*.py
+render_bumpers_master.py
+build_brand_packaging.py
+
+# --- Channel Branding, Bumpers & Private Cloned Voices ---
+assets/brand/
+assets/voices/
+assets/audio/previews/
+
+# --- Heavy AI Model Weights (>100MB GitHub Limit) ---
+assets/models/kokoro/*.onnx
+assets/models/kokoro/*.bin
+assets/models/whisper/**
+!assets/models/kokoro/.gitkeep
+!assets/models/whisper/.gitkeep
+
+# --- Python & Node Runtimes, Dependencies & Caches ---
+.venv/
+venv/
+env/
+node_modules/
+dist/
+.cache/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Internal Agent Logs, Receipts & Scratch Workspaces ---
+LESSONS.md
+receipts/
+scratch/
+test_outputs/
+graphify-out/
+.gemini/
+.idea/
+.vscode/
+
+# --- Rendered Media & Transient Output Files ---
+*.mp4
+*.wav
+*.aac
+*.m4a
+*.webm
+*.avi
+!assets/audio/sfx/*.wav
+!assets/audio/bgm/*.wav
+!assets/audio/*.ogg
+
+# --- OS & Environment Files ---
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.local
+.env.*.local

@@ -1,0 +1,319 @@
+{
+  "$schema": "https://intuisim.com/schemas/v1/asset-registry.json",
+  "name": "IntuiSim Modular 3D Asset Library",
+  "version": "1.0.0",
+  "description": "Foundational modular 3D WebGL assets for educational video pipelines and interactive SaaS simulation engine.",
+  "workspaceRoot": "F:/IntuiSim/assets",
+  "assets": [
+    {
+      "id": "silicon-atom",
+      "name": "Silicon Atom (Z=14)",
+      "category": "atom",
+      "version": "1.0.0",
+      "entryPoint": "./models/SiliconAtom.js",
+      "className": "SiliconAtom",
+      "description": "Isolated Silicon atom featuring a glowing +14q core, neon core [1s² 2s² 2p⁶], reactive M-shell [3s² 3p²], 3s radial nodal spheres (n - l - 1 = 2), and axial disassembly rails.",
+      "parameters": {
+        "radius": {
+          "type": "number",
+          "default": 1.5,
+          "min": 0.5,
+          "max": 5.0,
+          "description": "Base visual scale radius of the atomic nucleus."
+        },
+        "coreRadius": {
+          "type": "number",
+          "default": 0.7,
+          "min": 0.3,
+          "max": 2.5,
+          "description": "Bounding radius for the neon-like core [1s² 2s² 2p⁶]."
+        },
+        "valenceRadius": {
+          "type": "number",
+          "default": 2.4,
+          "min": 1.0,
+          "max": 6.0,
+          "description": "Radius for the valence shell holding 4 reactive electrons."
+        },
+        "showRadialNodes": {
+          "type": "boolean",
+          "default": false,
+          "description": "Controls visibility of concentric 3s radial zero-probability shells."
+        },
+        "laserPlaneActive": {
+          "type": "boolean",
+          "default": false,
+          "description": "Activates the horizontal laser slice plane exposing internal electron density."
+        },
+        "materialStyle": {
+          "type": "string",
+          "enum": ["luxury", "wireframe", "xray"],
+          "default": "luxury",
+          "description": "Shading style adhering to Apple Keynote / linear luxury physical materials."
+        }
+      },
+      "materials": [
+        "MeshPhysicalMaterial(clearcoat: 1.0, roughness: 0.15, emissive: 0xd97706)",
+        "MeshPhysicalMaterial(clearcoat: 1.0, roughness: 0.08, emissive: 0x00f0ff)",
+        "MeshPhysicalMaterial(transmission: 0.82, opacity: 0.38, color: 0x10b981)"
+      ],
+      "pedagogicalTags": [
+        "silicon",
+        "atomic-physics",
+        "electron-configuration",
+        "radial-nodes",
+        "valence-shell",
+        "semiconductors"
+      ],
+      "saasApiSchema": {
+        "restEndpoint": "/api/v1/sim/models/silicon-atom",
+        "graphqlQuery": "query GetSiliconAtom($disassembly: Float, $laserY: Float) { siliconAtom(disassemblyRail: $disassembly, laserPlaneY: $laserY) { id worldMatrix annotations } }",
+        "supportsGLBExport": true
+      }
+    },
+    {
+      "id": "sp3-orbital-group",
+      "name": "sp³ Hybrid Orbital & Basis Group",
+      "category": "orbital",
+      "version": "1.0.0",
+      "entryPoint": "./models/Sp3OrbitalGroup.js",
+      "className": "Sp3OrbitalGroup",
+      "description": "Parametric solid lathe hybrid orbitals representing the transformation from unhybridized basis {|3s⟩, |3px⟩, |3py⟩, |3pz⟩} to four 109.47° tetrahedral lobes and LCAO σ-bonding.",
+      "parameters": {
+        "scale": {
+          "type": "number",
+          "default": 1.0,
+          "min": 0.2,
+          "max": 4.0,
+          "description": "Global scale multiplier."
+        },
+        "lobeLength": {
+          "type": "number",
+          "default": 2.8,
+          "min": 1.0,
+          "max": 6.0,
+          "description": "Maximum reach of the major positive hybrid lobe."
+        },
+        "hybridization": {
+          "type": "number",
+          "default": 0.0,
+          "min": 0.0,
+          "max": 1.0,
+          "description": "Interpolation factor: 0.0 = pure unhybridized basis, 1.0 = pure sp³ hybrid."
+        },
+        "caliperActive": {
+          "type": "boolean",
+          "default": false,
+          "description": "Activates the 3D laser caliper dimension arc measuring 109.47°."
+        },
+        "lcaoDistance": {
+          "type": "number",
+          "default": 5.0,
+          "min": 2.0,
+          "max": 8.0,
+          "description": "Inter-atomic approach distance: 5.0 = isolated, 2.35 = bonded silicon σ state."
+        }
+      },
+      "materials": [
+        "MeshPhysicalMaterial(transmission: 0.15, roughness: 0.12, clearcoat: 1.0, thickness: 1.2)",
+        "MeshPhysicalMaterial(color: 0xef4444, transmission: 0.85, opacity: 0.45)"
+      ],
+      "pedagogicalTags": [
+        "quantum-chemistry",
+        "orbital-hybridization",
+        "sp3",
+        "covalent-bond",
+        "lcao",
+        "tetrahedral-geometry"
+      ],
+      "saasApiSchema": {
+        "restEndpoint": "/api/v1/sim/models/sp3-orbital",
+        "graphqlQuery": "query GetSp3Orbital($factor: Float, $caliper: Boolean) { sp3Orbital(hybridization: $factor, caliperActive: $caliper) { id angle annotations } }",
+        "supportsGLBExport": true
+      }
+    },
+    {
+      "id": "keithley-picoammeter",
+      "name": "Keithley 6487 Digital Picoammeter",
+      "category": "instrument",
+      "version": "1.0.0",
+      "entryPoint": "./models/KeithleyPicoammeter.js",
+      "className": "KeithleyPicoammeter",
+      "description": "High-precision benchtop digital picoammeter with live glowing VFD/LED 7-segment readout, gold-plated triaxial jacks, and flexible test leads.",
+      "parameters": {
+        "scale": {
+          "type": "number",
+          "default": 1.0,
+          "min": 0.2,
+          "max": 3.0,
+          "description": "Instrument chassis scale."
+        },
+        "initialCurrent": {
+          "type": "number",
+          "default": 0.0,
+          "description": "Initial live current readout in Amperes."
+        },
+        "initialUnit": {
+          "type": "string",
+          "enum": ["A", "mA", "uA", "nA", "pA"],
+          "default": "nA",
+          "description": "Display unit formatting."
+        },
+        "showProbes": {
+          "type": "boolean",
+          "default": true,
+          "description": "Renders flexible high/low coaxial test leads curving toward contacts."
+        }
+      },
+      "materials": [
+        "MeshStandardMaterial(roughness: 0.35, metalness: 0.85, color: 0x111827)",
+        "MeshPhysicalMaterial(color: 0xd4af37, metalness: 0.95, clearcoat: 1.0)",
+        "CanvasTexture(VFD 7-segment digital font with #00ffcc phosphor glow)"
+      ],
+      "pedagogicalTags": [
+        "instrumentation",
+        "picoammeter",
+        "electrical-measurement",
+        "current-readout",
+        "laboratory"
+      ],
+      "saasApiSchema": {
+        "restEndpoint": "/api/v1/sim/models/keithley-picoammeter",
+        "graphqlQuery": "query GetPicoammeter($amps: Float) { picoammeter(currentAmps: $amps) { id readout overload terminalPositions } }",
+        "supportsGLBExport": true
+      }
+    },
+    {
+      "id": "diamond-cubic-unit-cell",
+      "name": "Diamond Cubic Crystal Unit Cell",
+      "category": "lattice",
+      "version": "1.0.0",
+      "entryPoint": "./structures/DiamondCubicUnitCell.js",
+      "className": "DiamondCubicUnitCell",
+      "description": "Diamond cubic unit cell (a = 5.43 Å) with 8 corner octants, 6 face-center hemispheres, 4 interior basis atoms, and crystallographic disassembly rails.",
+      "parameters": {
+        "a": {
+          "type": "number",
+          "default": 5.43,
+          "min": 3.0,
+          "max": 10.0,
+          "description": "Lattice constant in Ångströms / visual units."
+        },
+        "atomRadius": {
+          "type": "number",
+          "default": 0.52,
+          "min": 0.2,
+          "max": 1.2,
+          "description": "Atomic sphere radius."
+        },
+        "bondRadius": {
+          "type": "number",
+          "default": 0.08,
+          "min": 0.02,
+          "max": 0.3,
+          "description": "Covalent bond cylinder radius."
+        },
+        "initialExplosion": {
+          "type": "number",
+          "default": 0.0,
+          "min": 0.0,
+          "max": 1.0,
+          "description": "Disassembly factor along crystallographic rails."
+        },
+        "clippedOctants": {
+          "type": "boolean",
+          "default": false,
+          "description": "Slices corner atoms into 1/8 wedges and face atoms into 1/2 hemispheres."
+        }
+      },
+      "materials": [
+        "MeshPhysicalMaterial(color: 0xf59e0b, clearcoat: 1.0, emissiveIntensity: 1.0)",
+        "MeshPhysicalMaterial(color: 0x10b981, clearcoat: 1.0, emissiveIntensity: 1.0)",
+        "MeshPhysicalMaterial(color: 0x00f0ff, clearcoat: 1.0, emissiveIntensity: 1.4)"
+      ],
+      "pedagogicalTags": [
+        "crystallography",
+        "diamond-cubic",
+        "fcc",
+        "silicon-lattice",
+        "stoichiometry",
+        "atomic-packing-fraction"
+      ],
+      "saasApiSchema": {
+        "restEndpoint": "/api/v1/sim/structures/diamond-cubic",
+        "graphqlQuery": "query GetUnitCell($explosion: Float, $clipped: Boolean) { unitCell(explosionFactor: $explosion, clippedOctants: $clipped) { id stoichiometry APF } }",
+        "supportsGLBExport": true
+      }
+    },
+    {
+      "id": "potential-well-terrain",
+      "name": "Kronig-Penney 3D Potential Well Terrain",
+      "category": "potential",
+      "version": "1.0.0",
+      "entryPoint": "./structures/PotentialWellTerrain.js",
+      "className": "PotentialWellTerrain",
+      "description": "Deformable 3D potential energy heightfield V(x,z) with Coulomb lattice wells, periodic barriers, thermal acoustic phonons (0 to 300 K), and Bloch wavepacket transport.",
+      "parameters": {
+        "width": {
+          "type": "number",
+          "default": 16.0,
+          "min": 8.0,
+          "max": 40.0,
+          "description": "X spatial extent."
+        },
+        "depth": {
+          "type": "number",
+          "default": 16.0,
+          "min": 8.0,
+          "max": 40.0,
+          "description": "Z spatial extent."
+        },
+        "latticeConstant": {
+          "type": "number",
+          "default": 3.2,
+          "min": 1.5,
+          "max": 6.0,
+          "description": "Spatial period between potential wells."
+        },
+        "initialTemperature": {
+          "type": "number",
+          "default": 0.0,
+          "min": 0.0,
+          "max": 300.0,
+          "description": "Lattice temperature in Kelvin controlling acoustic phonon amplitudes."
+        },
+        "wellDepth": {
+          "type": "number",
+          "default": 1.8,
+          "min": 0.5,
+          "max": 4.0,
+          "description": "Coulomb attraction depth."
+        },
+        "barrierHeight": {
+          "type": "number",
+          "default": 0.75,
+          "min": 0.1,
+          "max": 3.0,
+          "description": "Periodic energy barrier height."
+        }
+      },
+      "materials": [
+        "MeshPhysicalMaterial(vertexColors: true, clearcoat: 1.0, roughness: 0.25)",
+        "MeshPhysicalMaterial(color: 0xffb703, transmission: 0.45, emissive: 0xd97706)"
+      ],
+      "pedagogicalTags": [
+        "quantum-mechanics",
+        "kronig-penney",
+        "energy-bands",
+        "bloch-wavepacket",
+        "acoustic-phonons",
+        "carrier-transport"
+      ],
+      "saasApiSchema": {
+        "restEndpoint": "/api/v1/sim/structures/potential-terrain",
+        "graphqlQuery": "query GetPotentialTerrain($tempK: Float, $wavepacketX: Float, $wavepacketZ: Float) { potentialTerrain(temperature: $tempK, x: $wavepacketX, z: $wavepacketZ) { id surfaceElevation wavepacketStatus } }",
+        "supportsGLBExport": true
+      }
+    }
+  ]
+}

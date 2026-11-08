@@ -1,0 +1,13 @@
+1
+00:00:00,000 --> 00:00:04,920
+At the atomic scale, pure silicon
+forms a diamond cubic crystal lattice,
+
+2
+00:00:05,380 --> 00:00:07,520
+where each atom shares valence bonds.
+
+3
+00:00:08,220 --> 00:00:12,480
+The MOSFET gate oxide thickness
+is measured in nanometers.

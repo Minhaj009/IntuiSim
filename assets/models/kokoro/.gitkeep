@@ -1,0 +1,2 @@
+# Place kokoro-v1.0.onnx and voices-v1.0.bin here.
+# Run 'python scripts/download_models.py' to download automatically.

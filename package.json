@@ -1,0 +1,15 @@
+{
+  "name": "intuisim",
+  "version": "1.0.0",
+  "description": "Autonomous STEM Educational Video Engine and Interactive Simulation Core",
+  "type": "module",
+  "scripts": {
+    "stepper": "node engine/compiler/headless_stepper.js"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "katex": "^0.16.11",
+    "puppeteer": "^25.13.0",
+    "three": "^0.169.0"
+  }
+}

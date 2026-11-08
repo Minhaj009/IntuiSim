@@ -1,0 +1,2 @@
+# Faster-whisper models are cached here.
+# Models will be downloaded on first run by engine/audio/aligner.py or scripts/download_models.py.

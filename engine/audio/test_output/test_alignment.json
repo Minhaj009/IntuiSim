@@ -1,0 +1,417 @@
+{
+  "audio_duration_seconds": 13.88,
+  "total_frames": 833,
+  "fps": 60,
+  "words": [
+    {
+      "word": "At",
+      "start": 0.0,
+      "end": 0.12,
+      "frame_start": 0,
+      "frame_end": 7
+    },
+    {
+      "word": "the",
+      "start": 0.12,
+      "end": 0.24,
+      "frame_start": 7,
+      "frame_end": 14
+    },
+    {
+      "word": "atomic",
+      "start": 0.24,
+      "end": 0.62,
+      "frame_start": 14,
+      "frame_end": 37
+    },
+    {
+      "word": "scale,",
+      "start": 0.62,
+      "end": 1.08,
+      "frame_start": 37,
+      "frame_end": 65
+    },
+    {
+      "word": "pure",
+      "start": 1.64,
+      "end": 1.74,
+      "frame_start": 98,
+      "frame_end": 104
+    },
+    {
+      "word": "silicon",
+      "start": 1.74,
+      "end": 2.16,
+      "frame_start": 104,
+      "frame_end": 130
+    },
+    {
+      "word": "forms",
+      "start": 2.16,
+      "end": 2.86,
+      "frame_start": 130,
+      "frame_end": 172
+    },
+    {
+      "word": "a",
+      "start": 2.86,
+      "end": 3.06,
+      "frame_start": 172,
+      "frame_end": 184
+    },
+    {
+      "word": "diamond",
+      "start": 3.06,
+      "end": 3.44,
+      "frame_start": 184,
+      "frame_end": 206
+    },
+    {
+      "word": "cubic",
+      "start": 3.44,
+      "end": 3.98,
+      "frame_start": 206,
+      "frame_end": 239
+    },
+    {
+      "word": "crystal",
+      "start": 3.98,
+      "end": 4.54,
+      "frame_start": 239,
+      "frame_end": 272
+    },
+    {
+      "word": "lattice,",
+      "start": 4.54,
+      "end": 4.92,
+      "frame_start": 272,
+      "frame_end": 295
+    },
+    {
+      "word": "where",
+      "start": 5.38,
+      "end": 5.64,
+      "frame_start": 323,
+      "frame_end": 338
+    },
+    {
+      "word": "each",
+      "start": 5.64,
+      "end": 5.96,
+      "frame_start": 338,
+      "frame_end": 358
+    },
+    {
+      "word": "atom",
+      "start": 5.96,
+      "end": 6.18,
+      "frame_start": 358,
+      "frame_end": 371
+    },
+    {
+      "word": "shares",
+      "start": 6.18,
+      "end": 6.66,
+      "frame_start": 371,
+      "frame_end": 400
+    },
+    {
+      "word": "valence",
+      "start": 6.66,
+      "end": 7.2,
+      "frame_start": 400,
+      "frame_end": 432
+    },
+    {
+      "word": "bonds.",
+      "start": 7.2,
+      "end": 7.52,
+      "frame_start": 432,
+      "frame_end": 451
+    },
+    {
+      "word": "The",
+      "start": 8.22,
+      "end": 8.4,
+      "frame_start": 493,
+      "frame_end": 504
+    },
+    {
+      "word": "MOSFET",
+      "start": 8.4,
+      "end": 8.98,
+      "frame_start": 504,
+      "frame_end": 539
+    },
+    {
+      "word": "gate",
+      "start": 8.98,
+      "end": 9.32,
+      "frame_start": 539,
+      "frame_end": 559
+    },
+    {
+      "word": "oxide",
+      "start": 9.32,
+      "end": 9.88,
+      "frame_start": 559,
+      "frame_end": 593
+    },
+    {
+      "word": "thickness",
+      "start": 9.88,
+      "end": 10.36,
+      "frame_start": 593,
+      "frame_end": 622
+    },
+    {
+      "word": "is",
+      "start": 10.36,
+      "end": 11.02,
+      "frame_start": 622,
+      "frame_end": 661
+    },
+    {
+      "word": "measured",
+      "start": 11.02,
+      "end": 11.46,
+      "frame_start": 661,
+      "frame_end": 688
+    },
+    {
+      "word": "in",
+      "start": 11.46,
+      "end": 11.86,
+      "frame_start": 688,
+      "frame_end": 712
+    },
+    {
+      "word": "nanometers.",
+      "start": 11.86,
+      "end": 12.48,
+      "frame_start": 712,
+      "frame_end": 749
+    }
+  ],
+  "segments": [
+    {
+      "id": 1,
+      "text": "At the atomic scale, pure silicon forms a diamond cubic crystal lattice, where each atom",
+      "start": 0.0,
+      "end": 6.18,
+      "frame_start": 0,
+      "frame_end": 371,
+      "words": [
+        {
+          "word": "At",
+          "start": 0.0,
+          "end": 0.12,
+          "frame_start": 0,
+          "frame_end": 7
+        },
+        {
+          "word": "the",
+          "start": 0.12,
+          "end": 0.24,
+          "frame_start": 7,
+          "frame_end": 14
+        },
+        {
+          "word": "atomic",
+          "start": 0.24,
+          "end": 0.62,
+          "frame_start": 14,
+          "frame_end": 37
+        },
+        {
+          "word": "scale,",
+          "start": 0.62,
+          "end": 1.08,
+          "frame_start": 37,
+          "frame_end": 65
+        },
+        {
+          "word": "pure",
+          "start": 1.64,
+          "end": 1.74,
+          "frame_start": 98,
+          "frame_end": 104
+        },
+        {
+          "word": "silicon",
+          "start": 1.74,
+          "end": 2.16,
+          "frame_start": 104,
+          "frame_end": 130
+        },
+        {
+          "word": "forms",
+          "start": 2.16,
+          "end": 2.86,
+          "frame_start": 130,
+          "frame_end": 172
+        },
+        {
+          "word": "a",
+          "start": 2.86,
+          "end": 3.06,
+          "frame_start": 172,
+          "frame_end": 184
+        },
+        {
+          "word": "diamond",
+          "start": 3.06,
+          "end": 3.44,
+          "frame_start": 184,
+          "frame_end": 206
+        },
+        {
+          "word": "cubic",
+          "start": 3.44,
+          "end": 3.98,
+          "frame_start": 206,
+          "frame_end": 239
+        },
+        {
+          "word": "crystal",
+          "start": 3.98,
+          "end": 4.54,
+          "frame_start": 239,
+          "frame_end": 272
+        },
+        {
+          "word": "lattice,",
+          "start": 4.54,
+          "end": 4.92,
+          "frame_start": 272,
+          "frame_end": 295
+        },
+        {
+          "word": "where",
+          "start": 5.38,
+          "end": 5.64,
+          "frame_start": 323,
+          "frame_end": 338
+        },
+        {
+          "word": "each",
+          "start": 5.64,
+          "end": 5.96,
+          "frame_start": 338,
+          "frame_end": 358
+        },
+        {
+          "word": "atom",
+          "start": 5.96,
+          "end": 6.18,
+          "frame_start": 358,
+          "frame_end": 371
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "text": "shares valence bonds.",
+      "start": 6.18,
+      "end": 7.52,
+      "frame_start": 371,
+      "frame_end": 451,
+      "words": [
+        {
+          "word": "shares",
+          "start": 6.18,
+          "end": 6.66,
+          "frame_start": 371,
+          "frame_end": 400
+        },
+        {
+          "word": "valence",
+          "start": 6.66,
+          "end": 7.2,
+          "frame_start": 400,
+          "frame_end": 432
+        },
+        {
+          "word": "bonds.",
+          "start": 7.2,
+          "end": 7.52,
+          "frame_start": 432,
+          "frame_end": 451
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "text": "The MOSFET gate oxide thickness is measured in nanometers.",
+      "start": 8.22,
+      "end": 12.48,
+      "frame_start": 493,
+      "frame_end": 749,
+      "words": [
+        {
+          "word": "The",
+          "start": 8.22,
+          "end": 8.4,
+          "frame_start": 493,
+          "frame_end": 504
+        },
+        {
+          "word": "MOSFET",
+          "start": 8.4,
+          "end": 8.98,
+          "frame_start": 504,
+          "frame_end": 539
+        },
+        {
+          "word": "gate",
+          "start": 8.98,
+          "end": 9.32,
+          "frame_start": 539,
+          "frame_end": 559
+        },
+        {
+          "word": "oxide",
+          "start": 9.32,
+          "end": 9.88,
+          "frame_start": 559,
+          "frame_end": 593
+        },
+        {
+          "word": "thickness",
+          "start": 9.88,
+          "end": 10.36,
+          "frame_start": 593,
+          "frame_end": 622
+        },
+        {
+          "word": "is",
+          "start": 10.36,
+          "end": 11.02,
+          "frame_start": 622,
+          "frame_end": 661
+        },
+        {
+          "word": "measured",
+          "start": 11.02,
+          "end": 11.46,
+          "frame_start": 661,
+          "frame_end": 688
+        },
+        {
+          "word": "in",
+          "start": 11.46,
+          "end": 11.86,
+          "frame_start": 688,
+          "frame_end": 712
+        },
+        {
+          "word": "nanometers.",
+          "start": 11.86,
+          "end": 12.48,
+          "frame_start": 712,
+          "frame_end": 749
+        }
+      ]
+    }
+  ]
+}

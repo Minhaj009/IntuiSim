@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IntuiSim - Technical Blueprint Scene</title>
+  <style>
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('../../assets/fonts/JetBrainsMono-Regular.woff2') format('woff2');
+      font-weight: 400;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('../../assets/fonts/JetBrainsMono-Bold.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 3840px;
+      height: 2160px;
+      overflow: hidden;
+      background-color: #080a0f;
+      color: #94a3b8;
+      font-family: 'JetBrains Mono', monospace;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    #viewport {
+      width: 3840px;
+      height: 2160px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      z-index: 1;
+    }
+
+    /* Technical HUD Layer */
+    .hud-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 10;
+      padding: 100px 140px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Top Bar */
+    .hud-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid rgba(56, 189, 248, 0.2);
+      padding-bottom: 30px;
+    }
+    .hud-brand {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .hud-logo {
+      width: 24px;
+      height: 24px;
+      background: #00f0ff;
+      box-shadow: 0 0 15px #00f0ff;
+    }
+    .hud-title {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: #f8fafc;
+    }
+    .hud-subtitle {
+      font-size: 22px;
+      color: #38bdf8;
+      letter-spacing: 2px;
+    }
+
+    /* Telemetry Panel */
+    .hud-telemetry {
+      display: flex;
+      gap: 60px;
+    }
+    .telemetry-item {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .telemetry-label {
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: #64748b;
+      text-transform: uppercase;
+    }
+    .telemetry-value {
+      font-size: 26px;
+      font-weight: 700;
+      color: #00f0ff;
+      letter-spacing: 1px;
+    }
+
+    /* Bottom Status & Captions */
+    .hud-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .hud-caption-box {
+      max-width: 2400px;
+      background: rgba(8, 10, 15, 0.85);
+      border-left: 6px solid #00f0ff;
+      padding: 30px 45px;
+      backdrop-filter: blur(8px);
+    }
+    .hud-caption-text {
+      font-size: 36px;
+      font-weight: 400;
+      color: #e2e8f0;
+      line-height: 1.4;
+      letter-spacing: 1px;
+    }
+    .hud-caption-highlight {
+      color: #00f0ff;
+      font-weight: 700;
+      text-shadow: 0 0 12px rgba(0, 240, 255, 0.5);
+    }
+
+    .hud-coords {
+      font-size: 20px;
+      color: #475569;
+      letter-spacing: 2px;
+      text-align: right;
+    }
+
+    /* Coordinate Grid Markers */
+    .grid-cross {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+    }
+    .grid-cross::before, .grid-cross::after {
+      content: '';
+      position: absolute;
+      background: rgba(56, 189, 248, 0.3);
+    }
+    .grid-cross::before { top: 9px; left: 0; width: 20px; height: 2px; }
+    .grid-cross::after { top: 0; left: 9px; width: 2px; height: 20px; }
+  </style>
+
+  <link rel="stylesheet" href="../../assets/vendor/katex.min.css">
+  <script src="../../assets/vendor/katex.min.js"></script>
+  <script src="../../assets/vendor/gsap.min.js"></script>
+</head>
+<body>
+  <canvas id="viewport" width="3840" height="2160"></canvas>
+
+  <div class="hud-layer">
+    <!-- Top Bar -->
+    <div class="hud-header">
+      <div class="hud-brand">
+        <div class="hud-logo"></div>
+        <div>
+          <div class="hud-title" id="hud-topic">INTUISIM ARCHITECTURE</div>
+          <div class="hud-subtitle" id="hud-scene-id">SCENE 01 // SCHEMATIC LATTICE</div>
+        </div>
+      </div>
+      <div class="hud-telemetry">
+        <div class="telemetry-item">
+          <span class="telemetry-label">Scale</span>
+          <span class="telemetry-value" id="hud-scale">0.543 nm</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Temperature</span>
+          <span class="telemetry-value" id="hud-temp">300.0 K</span>
+        </div>
+        <div class="telemetry-item">
+          <span class="telemetry-label">Status</span>
+          <span class="telemetry-value" id="hud-status" style="color: #4ade80;">ACTIVE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Reticle Overlays -->
+    <div class="grid-cross" style="top: 200px; left: 200px;"></div>
+    <div class="grid-cross" style="top: 200px; right: 200px;"></div>
+    <div class="grid-cross" style="bottom: 200px; left: 200px;"></div>
+    <div class="grid-cross" style="bottom: 200px; right: 200px;"></div>
+
+    <!-- Bottom Bar -->
+    <div class="hud-footer">
+      <div class="hud-caption-box" id="hud-caption-container">
+        <div class="hud-caption-text" id="hud-caption">
+          Initializing atomic spatial coordinate telemetry...
+        </div>
+      </div>
+      <div class="hud-coords">
+        SYS.CLK: <span id="hud-clock">00:00.00</span><br>
+        FRAME: <span id="hud-frame">0000</span>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as THREE from '../../assets/vendor/three.module.js';
+
+    // 1. Core Scene Setup
+    const canvas = document.getElementById('viewport');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
+    renderer.setSize(3840, 2160);
+    renderer.setPixelRatio(1);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color('#080a0f');
+
+    const camera = new THREE.PerspectiveCamera(45, 3840 / 2160, 0.1, 1000);
+    camera.position.set(0, 10, 30);
+
+    // 2. Blueprint Coordinate Grid
+    const gridHelper = new THREE.GridHelper(60, 60, 0x00f0ff, 0x1e293b);
+    gridHelper.position.y = -5;
+    scene.add(gridHelper);
+
+    // Ambient & Directional Lighting Rig
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+    scene.add(ambientLight);
+
+    const dirLight1 = new THREE.DirectionalLight(0x00f0ff, 2.0);
+    dirLight1.position.set(15, 25, 20);
+    scene.add(dirLight1);
+
+    const dirLight2 = new THREE.DirectionalLight(0xf59e0b, 1.2);
+    dirLight2.position.set(-20, -10, -15);
+    scene.add(dirLight2);
+
+    // 3. Paused Master Timeline for Deterministic Stepping
+    const masterTimeline = gsap.timeline({ paused: true });
+
+    // Initial Camera Ease
+    masterTimeline.to(camera.position, {
+      x: 0,
+      y: 4,
+      z: 16,
+      duration: 5.0,
+      ease: "power2.out"
+    }, 0);
+
+    // Update Telemetry Elements
+    function updateHUD(timeInSeconds) {
+      const frameNum = Math.floor(timeInSeconds * 60);
+      const mins = Math.floor(timeInSeconds / 60);
+      const secs = (timeInSeconds % 60).toFixed(2);
+      document.getElementById('hud-frame').textContent = String(frameNum).padStart(4, '0');
+      document.getElementById('hud-clock').textContent = `${String(mins).padStart(2, '0')}:${String(secs).padStart(5, '0')}`;
+    }
+
+    // 4. MANDATORY HYPERFRAMES DETERMINISTIC RENDER HOOK
+    window.renderFrame = (timeInSeconds) => {
+      masterTimeline.seek(timeInSeconds, false);
+      updateHUD(timeInSeconds);
+      camera.lookAt(0, 0, 0);
+      renderer.render(scene, camera);
+    };
+
+    // 5. Readiness Promise Contract
+    window.__SCENE_READY__ = document.fonts.ready.then(() => {
+      // Warm up initial frame
+      window.renderFrame(0);
+      return true;
+    });
+
+    // 6. Dual-Mode Hook for Future Interactive SaaS
+    window.__INTUISIM_API__ = {
+      scene,
+      camera,
+      renderer,
+      masterTimeline,
+      setTelemetry: (key, val) => {
+        const el = document.getElementById(`hud-${key}`);
+        if (el) el.textContent = val;
+      },
+      setCaption: (text) => {
+        document.getElementById('hud-caption').innerHTML = text;
+      }
+    };
+  </script>
+</body>
+</html>
